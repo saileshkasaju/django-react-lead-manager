@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --config webpack.config.js --mode development ./leadmanager/frontend/src/index.js --output ./loadmanager/frontend/static/frontend/main.js",
+    "build": "webpack --config webpack.config.js --mode production ./leadmanager/frontend/src/index.js --output ./loadmanager/frontend/static/frontend/main.js"
   },
   "repository": {
     "type": "git",
@@ -19,9 +20,23 @@
   "homepage": "https://github.com/saileshkasaju/django-react-lead-manager#readme",
   "devDependencies": {
     "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
-    "babel-preset-env": "^1.7.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": []
   }
 }
