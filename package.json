@@ -1,0 +1,27 @@
+{
+  "name": "lead_manager_react-django",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saileshkasaju/django-react-lead-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saileshkasaju/django-react-lead-manager/issues"
+  },
+  "homepage": "https://github.com/saileshkasaju/django-react-lead-manager#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  }
+}
