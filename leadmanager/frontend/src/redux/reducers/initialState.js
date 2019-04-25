@@ -1,3 +1,5 @@
 export default {
-  leads: [],
+  leads: {
+    leads: [],
+  },
 }

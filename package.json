@@ -32,14 +32,27 @@
     "axios": "^0.18.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-alert": "^5.4.0",
+    "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.2",
+    "react-transition-group": "^4.0.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },
   "babel": {
     "presets": [
-      "@babel/preset-env",
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "edge": "17",
+            "firefox": "60",
+            "chrome": "67",
+            "safari": "11.1"
+          }
+        }
+      ],
       "@babel/preset-react"
     ],
     "plugins": []
