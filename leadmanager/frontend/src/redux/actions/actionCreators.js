@@ -1,5 +1,15 @@
 import * as types from './actionTypes'
 
+export const getErrors = (payload) => ({
+  type: types.GET_ERRORS,
+  payload,
+})
+
+export const createMessage = (payload) => ({
+  type: types.CREATE_MESSAGE,
+  payload,
+})
+
 export const getLeads = (payload) => ({
   type: types.GET_LEADS,
   payload,

@@ -9,6 +9,7 @@ function Leads({ leads, getLeads, deleteLead }) {
   }, [])
 
   const handleDelete = (id) => () => deleteLead(id)
+  const handleEdit = (id) => () => editLead(id)
   return (
     <>
       <h2>Leads List</h2>
@@ -20,6 +21,7 @@ function Leads({ leads, getLeads, deleteLead }) {
             <th>Email</th>
             <th>Message</th>
             <th />
+            <th />
           </tr>
         </thead>
         <tbody>
@@ -29,6 +31,14 @@ function Leads({ leads, getLeads, deleteLead }) {
               <td>{lead.name}</td>
               <td>{lead.email}</td>
               <td>{lead.message}</td>
+              <td>
+                <button
+                  className="button is-small"
+                  onClick={handleEdit(lead.id)}
+                >
+                  Edit
+                </button>
+              </td>
               <td>
                 <button
                   className="button is-small is-danger"
