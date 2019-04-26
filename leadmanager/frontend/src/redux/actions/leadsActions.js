@@ -7,7 +7,9 @@ export const getLeads = () => (dispatch) => {
     .then((res) => {
       dispatch(actions.getLeads(res.data))
     })
-    .catch((err) => console.log(err.response.data))
+    .catch((err) =>
+      dispatch(actions.returnErrors(err.response.data, err.response.status)),
+    )
 }
 
 export const deleteLead = (id) => (dispatch) => {
@@ -17,7 +19,9 @@ export const deleteLead = (id) => (dispatch) => {
       dispatch(actions.createMessage({ deleteLead: 'Lead Deleted' }))
       dispatch(actions.deleteLead(id))
     })
-    .catch((err) => console.log(err.response.data))
+    .catch((err) =>
+      dispatch(actions.returnErrors(err.response.data, err.response.status)),
+    )
 }
 
 export const addLead = (lead) => (dispatch) => {
@@ -27,11 +31,7 @@ export const addLead = (lead) => (dispatch) => {
       dispatch(actions.createMessage({ addLead: 'Lead Added' }))
       dispatch(actions.addLead(res.data))
     })
-    .catch((err) => {
-      const error = {
-        status: err.response.status,
-        msg: err.response.data,
-      }
-      dispatch(actions.getErrors(error))
-    })
+    .catch((err) =>
+      dispatch(actions.returnErrors(err.response.data, err.response.status)),
+    )
 }

@@ -6,9 +6,12 @@ import PropTypes from 'prop-types'
 function Alerts({ error, message }) {
   const alert = useAlert()
   useEffect(() => {
-    Object.keys(error.msg).map((e) =>
-      alert.error(`${e}: ${error.msg[e].join()}`),
-    )
+    Object.keys(error.msg).map((e) => {
+      if (typeof error.msg[e] === 'string') {
+        return alert.error(`${e}: ${error.msg[e]}`)
+      }
+      return alert.error(`${e}: ${error.msg[e].join()}`)
+    })
   }, [error])
 
   useEffect(() => {

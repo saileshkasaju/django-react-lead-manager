@@ -10,6 +10,9 @@ export const createMessage = (payload) => ({
   payload,
 })
 
+// return errors
+export const returnErrors = (msg, status) => getErrors({ msg, status })
+
 export const getLeads = (payload) => ({
   type: types.GET_LEADS,
   payload,
