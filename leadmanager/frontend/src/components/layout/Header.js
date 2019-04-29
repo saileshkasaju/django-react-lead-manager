@@ -1,13 +1,36 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { logout } from '../../redux/actions/authActions'
 
-export default function Header() {
+function Header({ auth: { isAuthenticated, user }, logout }) {
+  const authLinks = (
+    <>
+      <span>Welcome {(user && user.username) || ''}</span>
+      <button className="button is-light" onClick={logout}>
+        Logout
+      </button>
+    </>
+  )
+
+  const guestLinks = (
+    <div className="buttons">
+      <Link to="/register" className="button is-primary">
+        <strong>Register</strong>
+      </Link>
+      <Link to="/login" className="button is-light">
+        Login
+      </Link>
+    </div>
+  )
   return (
-    <header>
+    <header className="container">
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <a className="navbar-item" href="/">
+          <Link className="navbar-item" to="/">
             LEAD MANAGER
-          </a>
+          </Link>
 
           <a
             role="button"
@@ -23,7 +46,7 @@ export default function Header() {
         </div>
 
         <div id="navMenu" className="navbar-menu">
-          <div className="navbar-start">
+          {/* <div className="navbar-start">
             <a className="navbar-item">Home</a>
 
             <a className="navbar-item">Documentation</a>
@@ -39,20 +62,28 @@ export default function Header() {
                 <a className="navbar-item">Report an issue</a>
               </div>
             </div>
-          </div>
-
-          {/* <div className="navbar-end">
-            <div className="navbar-item">
-              <div className="buttons">
-                <a className="button is-primary">
-                  <strong>Sign up</strong>
-                </a>
-                <a className="button is-light">Log in</a>
-              </div>
-            </div>
           </div> */}
+
+          <div className="navbar-end">
+            <div className="navbar-item">
+              {isAuthenticated ? authLinks : guestLinks}
+            </div>
+          </div>
         </div>
       </nav>
     </header>
   )
 }
+
+Header.propTypes = {
+  auth: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = ({ auth }) => ({
+  auth,
+})
+
+export default connect(
+  mapStateToProps,
+  { logout },
+)(Header)

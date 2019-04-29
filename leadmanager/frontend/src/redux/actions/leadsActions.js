@@ -1,9 +1,10 @@
 import * as leadsApi from '../../api/leadsApi'
 import * as actions from './actionCreators'
+import { tokenConfig } from './authActions'
 
-export const getLeads = () => (dispatch) => {
+export const getLeads = () => (dispatch, getState) => {
   leadsApi
-    .getLeads()
+    .getLeads(tokenConfig(getState))
     .then((res) => {
       dispatch(actions.getLeads(res.data))
     })
@@ -12,9 +13,9 @@ export const getLeads = () => (dispatch) => {
     )
 }
 
-export const deleteLead = (id) => (dispatch) => {
+export const deleteLead = (id) => (dispatch, getState) => {
   leadsApi
-    .deleteLead(id)
+    .deleteLead(id, tokenConfig(getState))
     .then(() => {
       dispatch(actions.createMessage({ deleteLead: 'Lead Deleted' }))
       dispatch(actions.deleteLead(id))
@@ -24,9 +25,9 @@ export const deleteLead = (id) => (dispatch) => {
     )
 }
 
-export const addLead = (lead) => (dispatch) => {
+export const addLead = (lead) => (dispatch, getState) => {
   leadsApi
-    .addLead(lead)
+    .addLead(lead, tokenConfig(getState))
     .then((res) => {
       dispatch(actions.createMessage({ addLead: 'Lead Added' }))
       dispatch(actions.addLead(res.data))

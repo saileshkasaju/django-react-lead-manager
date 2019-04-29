@@ -6,12 +6,16 @@ import PropTypes from 'prop-types'
 function Alerts({ error, message }) {
   const alert = useAlert()
   useEffect(() => {
-    Object.keys(error.msg).map((e) => {
-      if (typeof error.msg[e] === 'string') {
-        return alert.error(`${e}: ${error.msg[e]}`)
-      }
-      return alert.error(`${e}: ${error.msg[e].join()}`)
-    })
+    if (error.msg.non_field_errors) {
+      return alert.error(`${error.msg.non_field_errors.join()}`)
+    } else {
+      Object.keys(error.msg).map((e) => {
+        if (typeof error.msg[e] === 'string') {
+          return alert.error(`${e}: ${error.msg[e]}`)
+        }
+        return alert.error(`${e}: ${error.msg[e].join()}`)
+      })
+    }
   }, [error])
 
   useEffect(() => {

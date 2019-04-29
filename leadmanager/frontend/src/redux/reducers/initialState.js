@@ -6,5 +6,11 @@ export default {
     msg: {},
     status: 200,
   },
-  messages: {}
+  messages: {},
+  auth: {
+    token: localStorage.getItem('token') || '',
+    isAuthenticated: false,
+    isLoading: false,
+    user: {},
+  },
 }

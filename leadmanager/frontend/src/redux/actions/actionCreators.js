@@ -27,3 +27,33 @@ export const addLead = (payload) => ({
   type: types.ADD_LEAD,
   payload,
 })
+
+export const userLoading = (payload) => ({
+  type: types.USER_LOADING,
+  payload,
+})
+
+export const userLoaded = (payload) => ({
+  type: types.USER_LOADED,
+  payload,
+})
+
+export const authError = (payload) => ({
+  type: types.AUTH_ERROR,
+  payload,
+})
+
+export const loginSuccess = (payload) => ({
+  type: types.LOGIN_SUCCESS,
+  payload,
+})
+
+export const loginFail = (payload) => ({
+  type: types.LOGIN_FAIL,
+  payload,
+})
+
+export const logoutSuccess = (payload) => ({
+  type: types.LOGOUT_SUCCESS,
+  payload,
+})
