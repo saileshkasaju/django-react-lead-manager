@@ -57,3 +57,13 @@ export const logoutSuccess = (payload) => ({
   type: types.LOGOUT_SUCCESS,
   payload,
 })
+
+export const registerSuccess = (payload) => ({
+  type: types.REGISTER_SUCCESS,
+  payload,
+})
+
+export const registerFail = (payload) => ({
+  type: types.REGISTER_FAIL,
+  payload,
+})

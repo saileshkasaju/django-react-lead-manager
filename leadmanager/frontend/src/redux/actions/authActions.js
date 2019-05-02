@@ -7,6 +7,8 @@ import {
   loginSuccess,
   loginFail,
   logoutSuccess,
+  registerSuccess,
+  registerFail,
 } from './actionCreators'
 
 // CHECK TOKEN AND LOAD USER
@@ -22,6 +24,30 @@ export const loadUser = () => (dispatch, getState) => {
     .catch((err) => {
       // dispatch(returnErrors(err.response.data, err.response.status))
       dispatch(authError())
+    })
+}
+
+// REGISTER USER
+export const register = ({ username, password, email }) => (dispatch) => {
+  // Headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+
+  // Request Body
+  const body = JSON.stringify({ username, password, email })
+
+  axios
+    .post('/api/auth/register', body, config)
+    .then((res) => {
+      dispatch(registerSuccess(res.data))
+    })
+    .catch((err) => {
+      console.log(err)
+      dispatch(returnErrors(err.response.data, err.response.status))
+      dispatch(registerFail())
     })
 }
 
